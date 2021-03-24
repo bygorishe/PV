@@ -1,0 +1,20 @@
+!define BLANK ""
+D:\WATCOM\lb3\mult\laba3.obj : D:\WATCOM\lb3\mult\laba3.for .AUTODEPEND
+ @D:
+ cd D:\WATCOM\lb3\mult
+ wfc386 laba3.for -d2 -q -dep
+
+D:\WATCOM\lb3\mult\laba3.exe : D:\WATCOM\lb3\mult\laba3.obj .AUTODEPEND
+ @D:
+ cd D:\WATCOM\lb3\mult
+ @%write laba3.lk1 FIL laba3.obj
+ @%append laba3.lk1 
+!ifneq BLANK ""
+ *wlib -q -n -b laba3.imp 
+ @%append laba3.lk1 LIBR laba3.imp
+!endif
+!ifneq BLANK ""
+ @%append laba3.lk1 
+!endif
+ *wlink name laba3 d all sys nt op m op maxe=25 op q op symf @laba3.lk1
+

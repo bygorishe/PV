@@ -1,0 +1,20 @@
+!define BLANK ""
+D:\WATCOM\lb3\matr\matr.obj : D:\WATCOM\lb3\matr\matr.for .AUTODEPEND
+ @D:
+ cd D:\WATCOM\lb3\matr
+ wfc386 matr.for -d2 -q -dep
+
+D:\WATCOM\lb3\matr\matr.exe : D:\WATCOM\lb3\matr\matr.obj .AUTODEPEND
+ @D:
+ cd D:\WATCOM\lb3\matr
+ @%write matr.lk1 FIL matr.obj
+ @%append matr.lk1 
+!ifneq BLANK ""
+ *wlib -q -n -b matr.imp 
+ @%append matr.lk1 LIBR matr.imp
+!endif
+!ifneq BLANK ""
+ @%append matr.lk1 
+!endif
+ *wlink name matr d all sys nt op m op maxe=25 op q op symf @matr.lk1
+
