@@ -1,0 +1,20 @@
+!define BLANK ""
+D:\WATCOM\lb3\gen\gen.obj : D:\WATCOM\lb3\gen\gen.for .AUTODEPEND
+ @D:
+ cd D:\WATCOM\lb3\gen
+ wfc386 gen.for -d2 -q -dep
+
+D:\WATCOM\lb3\gen\gen.exe : D:\WATCOM\lb3\gen\gen.obj .AUTODEPEND
+ @D:
+ cd D:\WATCOM\lb3\gen
+ @%write gen.lk1 FIL gen.obj
+ @%append gen.lk1 
+!ifneq BLANK ""
+ *wlib -q -n -b gen.imp 
+ @%append gen.lk1 LIBR gen.imp
+!endif
+!ifneq BLANK ""
+ @%append gen.lk1 
+!endif
+ *wlink name gen d all sys nt op m op maxe=25 op q op symf @gen.lk1
+
