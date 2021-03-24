@@ -1,0 +1,4 @@
+Quantity of segments =   131072
+a = 0.0000000E+00
+b = 0.4000000E+01
+Integral = 0.3657521E+01

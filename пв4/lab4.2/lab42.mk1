@@ -1,0 +1,22 @@
+!define BLANK ""
+C:\Users\angry\OneDrive\Desktop\lab4\lab4.2\laba42.obj : C:\Users\angry\OneD&
+rive\Desktop\lab4\lab4.2\laba42.for .AUTODEPEND
+ @C:
+ cd C:\Users\angry\OneDrive\Desktop\lab4\lab4.2
+ wfc386 laba42.for -d2 -q -dep
+
+C:\Users\angry\OneDrive\Desktop\lab4\lab4.2\lab42.exe : C:\Users\angry\OneDr&
+ive\Desktop\lab4\lab4.2\laba42.obj .AUTODEPEND
+ @C:
+ cd C:\Users\angry\OneDrive\Desktop\lab4\lab4.2
+ @%write lab42.lk1 FIL laba42.obj
+ @%append lab42.lk1 
+!ifneq BLANK ""
+ *wlib -q -n -b lab42.imp 
+ @%append lab42.lk1 LIBR lab42.imp
+!endif
+!ifneq BLANK ""
+ @%append lab42.lk1 
+!endif
+ *wlink name lab42 d all sys nt op m op maxe=25 op q op symf @lab42.lk1
+
